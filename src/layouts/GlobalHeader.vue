@@ -15,6 +15,7 @@
       <a-col flex='100px'>
         <div class="user-login-status">
           <div v-if="loginUserStore.loginUser.id">
+            <a-avatar :size='40' :src="loginUserStore.loginUser.avatarUrl" />
             {{ loginUserStore.loginUser.username ?? '无名字' }}
           </div>
           <div v-else>
@@ -32,8 +33,6 @@ import { HomeOutlined } from '@ant-design/icons-vue'
 import { MenuProps } from 'ant-design-vue'
 import { useRouter } from "vue-router";
 import { useLoginUserStore } from '@/stores/useLoginUserStore.ts'
-import { helloUsingGet } from '../../servers/api/basicController.ts'
-import { helloUsingPost, userUsingGet } from '@/api/basicController.ts'
 
 const current = ref<string[]>([])
 const items = ref<MenuProps['items']>([
@@ -67,7 +66,6 @@ router.afterEach((to, from, failure) => {
 })
 const loginUserStore = useLoginUserStore();
 loginUserStore.fetchUserLogin()
-console.log(userUsingGet())
 </script>
 
 <style scoped>
