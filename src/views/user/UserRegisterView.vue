@@ -49,13 +49,11 @@
 
 <script lang='ts' setup>
 import { reactive } from 'vue'
-import { useLoginUserStore } from '@/stores/useLoginUserStore.ts'
-import { userLoginUsingPost, userRegisterUsingPost } from '@/api/userController.ts'
+import { userRegisterUsingPost } from '@/api/userController.ts'
 import { message } from 'ant-design-vue'
 import { useRouter } from 'vue-router'
 import type { Rule } from 'ant-design-vue/es/form'
 
-const userLoginStore = useLoginUserStore()
 const key = 'updatable'
 const router = useRouter()
 

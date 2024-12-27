@@ -74,7 +74,7 @@ const handlerLogin = async () => {
     })
     return
   }
-  message.error(res.description)
+  message.error({content: res.description, key})
 }
 const onFinishFailed = (errorInfo: any) => {
   message.warn('请按要求填写账号密码!')

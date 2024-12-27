@@ -29,11 +29,6 @@ declare namespace API {
     description?: string
   }
 
-  type deleteUserUsingPOSTParams = {
-    /** id */
-    id: number
-  }
-
   type getUserByIdUsingGETParams = {
     /** id */
     id?: number
@@ -81,6 +76,10 @@ declare namespace API {
     username?: string
   }
 
+  type UserDeleteRequest = {
+    id?: number
+  }
+
   type UserLoginRequest = {
     userAccount?: string
     userPassword?: string
@@ -104,6 +103,7 @@ declare namespace API {
     checkPassword?: string
     userAccount?: string
     userPassword?: string
+    username?: string
   }
 
   type UserUpdateRequest = {

@@ -6,6 +6,7 @@ import 'ant-design-vue/dist/reset.css';
 import router from './router'
 // @ts-ignore
 import App from '@/App.vue'
+import './access.ts'
 
 const app = createApp(App)
 
