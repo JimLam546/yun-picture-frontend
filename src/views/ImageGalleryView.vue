@@ -20,11 +20,11 @@
       <a-layout-content style="background: #fff; padding: 0 24px 24px">
         <div class="filter-section">
           <a-tabs default-active-key="all" @change="handleCategoryChange">
-            <a-tab-pane key="" tab="全部"></a-tab-pane>
-            <a-tab-pane key="摄影作品" tab="摄影作品"></a-tab-pane>
-            <a-tab-pane key="绘画作品" tab="绘画作品"></a-tab-pane>
-            <a-tab-pane key="桌面壁纸" tab="桌面壁纸"></a-tab-pane>
-            <a-tab-pane key="手机壁纸" tab="手机壁纸"></a-tab-pane>
+            <a-tab-pane key="all" tab="全部"></a-tab-pane>
+            <a-tab-pane key="photography" tab="摄影作品"></a-tab-pane>
+            <a-tab-pane key="painting" tab="绘画作品"></a-tab-pane>
+            <a-tab-pane key="desktop" tab="桌面壁纸"></a-tab-pane>
+            <a-tab-pane key="mobile" tab="手机壁纸"></a-tab-pane>
           </a-tabs>
           <div class="tags-section" style="margin-top: 8px">
             <span>标签:</span>
@@ -149,31 +149,19 @@ const pageSize = ref(12) // Number of images per page
 const totalImages = ref(0)
 const selectedTags = ref<string[]>([])
 const availableTags = ref(['体育', '风景', '抽象', '城市']) // Define available tags for checkboxes
-const selectedCategory = ref('')
-const searchText = ref('')
 
-const navigateToDetail = async (imageId: string) => {
-  console.log('尝试导航到图片ID:', imageId)
-  if (!imageId || String(imageId).trim() === '') {
-    console.error('导航失败：图片ID无效或缺失。实际接收到的 ID:', imageId)
-    return
-  }
-  await router.push({
-    path: `/image/${imageId}`,
-    replace: false,
-  })
+const navigateToDetail = (imageId: string) => {
+  router.push(`/image/${imageId}`)
 }
 
 const onSearch = (value: string) => {
   console.log('Search:', value)
-  searchText.value = value
   // Implement search logic here
   fetchImages()
 }
 
 const handleCategoryChange = (key: string) => {
   console.log('Category changed:', key)
-  selectedCategory.value = key
   // Implement category filter logic here
   fetchImages()
 }
@@ -181,20 +169,16 @@ const handleCategoryChange = (key: string) => {
 const toggleTagSelection = (tag: string) => {
   const index = selectedTags.value.indexOf(tag)
   if (index > -1) {
-    selectedTags.value.splice(index, 1) // 移除标签
+    selectedTags.value.splice(index, 1) // Remove tag
   } else {
-    selectedTags.value.push(tag) // 添加标签
+    selectedTags.value.push(tag) // Add tag
   }
-  // 在 selectedTags 上，监听器将自动调用 fetchImages
+  // The watcher on selectedTags will automatically call fetchImages
 }
 
-watch(
-  selectedTags,
-  () => {
-    fetchImages()
-  },
-  { deep: true }, // 开启深度监听
-)
+watch(selectedTags, () => {
+  fetchImages()
+})
 
 const handlePageChange = (page: number) => {
   currentPage.value = page
@@ -215,14 +199,11 @@ const getTagColor = (tag: string) => {
 
 const fetchImages = async () => {
   try {
-    console.log('检索带有选定标签的图像：', selectedTags.value)
+    console.log('Fetching images with selected tags:', selectedTags.value)
     const response = await getPictureVoListByPageWithCacheUsingPost({
       current: currentPage.value,
       pageSize: pageSize.value,
       // 可以添加其他筛选参数
-      tags: selectedTags.value,
-      category: selectedCategory.value,
-      searchText: searchText.value,
     })
     console.log('响应结果：', response.data)
 

@@ -1,39 +1,15 @@
 # yu-picture-frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+使用 vue3 + ant design vue 组件库
 
-## Recommended IDE Setup
+## 模块
+- 用户管理
+- 个人中心
+- 用户搜索
+  - 用户账号
+  - 用户昵称
+- 注销
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+## 权限
+- 非管理员不能访问管理员页面
+- 非管理员不在导航栏上显示不能访问的页面

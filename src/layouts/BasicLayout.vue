@@ -1,23 +1,20 @@
 <template>
   <div id="basicLayout">
     <a-layout style="min-height: 100vh">
-      <a-layout-header class='header'>
+      <a-layout-header class="header">
         <GlobalHeader />
       </a-layout-header>
-      <a-layout-content class='content'>
+      <a-layout-content class="content">
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">
-        <a href="https://gitee.com/jim-lam" target="_blank">
-          JimLam1111111111
-        </a>
+        <a href="https://gitee.com/jim-lam" target="_blank"> JimLam </a>
       </a-layout-footer>
-
     </a-layout>
   </div>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import GlobalHeader from '@/layouts/GlobalHeader.vue'
 </script>
 
@@ -32,11 +29,11 @@ import GlobalHeader from '@/layouts/GlobalHeader.vue'
   text-align: center;
 }
 
- #basicLayout .content {
-   background: linear-gradient(to right, #fefefe, #fff);
-   margin-bottom: 28px;
-   padding: 20px;
- }
+#basicLayout .content {
+  background: linear-gradient(to right, #fefefe, #fff);
+  margin-bottom: 28px;
+  padding: 20px;
+}
 
 #basicLayout .header {
   padding-inline: 20px;
@@ -44,5 +41,4 @@ import GlobalHeader from '@/layouts/GlobalHeader.vue'
   color: unset;
   background: white;
 }
-
 </style>

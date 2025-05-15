@@ -2,8 +2,8 @@
 /* eslint-disable */
 import request from '@/request/request'
 
-/** addUser POST /user/addUser */
-export async function addUserUsingPost(body: API.UserAddRequest, options?: { [key: string]: any }) {
+/** 创建用户（管理员） POST /user/addUser */
+export async function addUserUsingPost(body: API.Pinyin_7, options?: { [key: string]: any }) {
   return request<API.BaseResponseLong_>('/user/addUser', {
     method: 'POST',
     headers: {
@@ -14,7 +14,7 @@ export async function addUserUsingPost(body: API.UserAddRequest, options?: { [ke
   })
 }
 
-/** deleteUser POST /user/delete */
+/** 删除用户 POST /user/delete */
 export async function deleteUserUsingPost(
   body: API.UserDeleteRequest,
   options?: { [key: string]: any }
@@ -29,7 +29,7 @@ export async function deleteUserUsingPost(
   })
 }
 
-/** getUserById GET /user/get */
+/** 获取用户信息 GET /user/get */
 export async function getUserByIdUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.getUserByIdUsingGETParams,
@@ -44,7 +44,7 @@ export async function getUserByIdUsingGet(
   })
 }
 
-/** getLoginUser GET /user/get/current */
+/** 获取当前登录用户信息 GET /user/get/current */
 export async function getLoginUserUsingGet(options?: { [key: string]: any }) {
   return request<API.BaseResponseUserVO_>('/user/get/current', {
     method: 'GET',
@@ -52,7 +52,7 @@ export async function getLoginUserUsingGet(options?: { [key: string]: any }) {
   })
 }
 
-/** getUserVOById GET /user/get/vo */
+/** 获取用户信息VO GET /user/get/vo */
 export async function getUserVoByIdUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.getUserVOByIdUsingGETParams,
@@ -67,9 +67,9 @@ export async function getUserVoByIdUsingGet(
   })
 }
 
-/** userListByPage POST /user/list/page */
+/** 分页获取用户列表（管理员） POST /user/list/page */
 export async function userListByPageUsingPost(
-  body: API.UserQueryRequest,
+  body: API.Pinyin__,
   options?: { [key: string]: any }
 ) {
   return request<API.BaseResponsePageUserVO_>('/user/list/page', {
@@ -82,7 +82,7 @@ export async function userListByPageUsingPost(
   })
 }
 
-/** userLogin POST /user/login */
+/** 用户登录 POST /user/login */
 export async function userLoginUsingPost(
   body: API.UserLoginRequest,
   options?: { [key: string]: any }
@@ -97,7 +97,7 @@ export async function userLoginUsingPost(
   })
 }
 
-/** userLogout POST /user/logout */
+/** 用户注销 POST /user/logout */
 export async function userLogoutUsingPost(options?: { [key: string]: any }) {
   return request<API.BaseResponseBoolean_>('/user/logout', {
     method: 'POST',
@@ -105,7 +105,7 @@ export async function userLogoutUsingPost(options?: { [key: string]: any }) {
   })
 }
 
-/** userRegister POST /user/register */
+/** 用户注册 POST /user/register */
 export async function userRegisterUsingPost(
   body: API.UserRegisterRequest,
   options?: { [key: string]: any }
@@ -120,7 +120,7 @@ export async function userRegisterUsingPost(
   })
 }
 
-/** updateUser POST /user/update */
+/** 更新用户信息 POST /user/update */
 export async function updateUserUsingPost(
   body: API.UserUpdateRequest,
   options?: { [key: string]: any }
